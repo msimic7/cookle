@@ -43,7 +43,7 @@ DOM.searchResultsPages().addEventListener('click', e => {
   }
 });
 
-const recipeControl = async () => {
+const recipeControler = async () => {
   const id = window.location.hash.substring(1);
 
   if (id) {
@@ -71,7 +71,7 @@ const recipeControl = async () => {
 };
 
 ['hashchange', 'load'].forEach(event =>
-  window.addEventListener(event, recipeControl)
+  window.addEventListener(event, recipeControler)
 );
 
 window.addEventListener('load', () => {
@@ -92,7 +92,7 @@ DOM.recipe().addEventListener('click', e => {
     state.recipe.updateServings('inc');
     recipeView.updateServingsAndIngredients(state.recipe);
   } else if (e.target.matches('.recipe__btn, .recipe__btn *')) {
-    listControl();
+    listControler();
   } else if (e.target.matches('.recipe__love, .recipe__love *')) {
     likesControler();
   }
@@ -109,7 +109,7 @@ DOM.list().addEventListener('click', e => {
   }
 });
 
-const listControl = () => {
+const listControler = () => {
   if (!state.list) {
     state.list = new List();
   }
@@ -119,8 +119,6 @@ const listControl = () => {
     listView.renderItem(item);
   });
 };
-
-//TEST
 
 const likesControler = () => {
   if (!state.likes) state.likes = new Likes();
