@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "devD": "webpack --mode development",
+    "buildD": "webpack --mode production",
+    "startD": "webpack-dev-server --mode development --open",
+    "dev": "node server.js",
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "",
