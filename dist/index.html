@@ -14,7 +14,19 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="sad__news__info">
+      <button class="sad__news__info__close">X</button>
+      <p>
+        Application was based on Food2Fork API that was recently shut down. Due
+        to lack of a better API (that isn't paid) application was switched to
+        <a target="_blank" href="https://www.themealdb.com/">TheMealDB</a> API
+        and with it no longer has all the features and searches are limited
+        (TheMealDB recipe database is not that diverse). Code changes available
+        on
+        <a target="_blank" href="https://github.com/msimic7/cookle">GitHub</a>.
+      </p>
+    </div>
+    <div class="container sad__news">
       <header class="header">
         <div class="search">
           <a href="/" class="header__logo"
@@ -49,6 +61,8 @@
 
       <div class="results">
         <ul class="results__list"></ul>
+
+        <div class="results__pages"></div>
       </div>
 
       <div class="recipe"></div>
@@ -61,11 +75,10 @@
         <div class="copyright">
           &copy; by Milan Simic. Powered by
           <a href="https://www.themealdb.com/" target="_blank" class="link"
-            >themealdb.com/</a
+            >TheMealDB.com</a
           >.
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="js/bundle.js"></script>
-  </body>
+  <script type="text/javascript" src="js/bundle.js"></script></body>
 </html>
