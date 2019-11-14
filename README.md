@@ -1,9 +1,9 @@
 # COOKLE
 JavaScript application for recipe searching.
 
-**SADLY, FOOD2FORK API IS SHUTTING DOWN**
+**SADLY, FOOD2FORK API IS SHUT DOWN**
 
-**WORKING ON REPLACING API**
+**APPLICATION SWITCHED TO THEMEALDB API**
 
 Live: https://cookle.herokuapp.com/
 
@@ -16,4 +16,4 @@ Built using:
 
 Code organised in MVC structure.
 
-Data gathered from Food2Fork API. 
+Data gathered from TheMealDB API. 
