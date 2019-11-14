@@ -3,14 +3,15 @@ export const DOM = {
   searchInput: () => document.querySelector('.search__field'),
   searchResults: () => document.querySelector('.results'),
   searchResultsList: () => document.querySelector('.results__list'),
-  searchResultsPages: () => document.querySelector('.results__pages'),
   recipe: () => document.querySelector('.recipe'),
   recipeServings: () => document.querySelector('.recipe__info-data--people'),
-  recipeIngredientsCount: () => document.querySelectorAll('.recipe__count'),
   recipeBtnAddToShoppingList: () => document.querySelector('.recipe__btn'),
   list: () => document.querySelector('.shopping__list'),
   likesList: () => document.querySelector('.likes__list'),
-  likesMenu: () => document.querySelector('.likes__field')
+  likesMenu: () => document.querySelector('.likes__field'),
+  sadNewsInfo: () => document.querySelector('.sad__news__info'),
+  sadNewsBtn: () => document.querySelector('.sad__news__info__close'),
+  appContainer: () => document.querySelector('.container')
 };
 
 export const renderLoader = parent => {

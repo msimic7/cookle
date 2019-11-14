@@ -555,7 +555,7 @@ li {
 }
 .shopping__list {
   list-style: none;
-  height: 90rem;
+  height: 80rem;
   overflow: auto;
 }
 .shopping__item {
@@ -616,4 +616,44 @@ li {
 .shopping__item:hover .shopping__delete {
   opacity: 1;
   visibility: visible;
+}
+
+.sad__news {
+  pointer-events: none;
+}
+
+.sad__news__info {
+  position: fixed;
+  left: 20%;
+  z-index: 2;
+  top: 10%;
+  height: 50%;
+  width: 60%;
+  background: #f4b400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  font-size: 32px;
+  border-radius: 5px;
+  color: #502313;
+}
+
+.sad__news__info p a {
+  text-decoration: none;
+  color: #db4437;
+}
+
+.sad__news__info__close {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  height: 30px;
+  width: 60px;
+  background: #db4437;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: #2e2826;
+  cursor: pointer;
 }

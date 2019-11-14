@@ -5,11 +5,9 @@ export default class List {
     this.items = [];
   }
 
-  addItem(count, unit, ingredient) {
+  addItem(ingredient) {
     const item = {
       id: uniqid(),
-      count,
-      unit,
       ingredient
     };
 

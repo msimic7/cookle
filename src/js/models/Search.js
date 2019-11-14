@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { key } from '../config';
 
 export default class Search {
   constructor(query) {
@@ -9,12 +8,11 @@ export default class Search {
   async getRecipes() {
     try {
       const result = await axios(
-        `https://www.food2fork.com/api/search?key=${key}&q=${this.query}`
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${this.query}`
       );
-      this.recipes = result.data.recipes;
+      this.recipes = result.data.meals;
     } catch (error) {
       console.log(error);
-      alert('Failed getting recipes!');
     }
   }
 }

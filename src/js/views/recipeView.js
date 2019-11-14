@@ -1,5 +1,4 @@
 import { DOM } from './base';
-import { Fraction } from 'fractional';
 
 export const renderRecipe = (recipe, isLiked) => {
   const markup = `<figure class="recipe__fig">
@@ -26,18 +25,6 @@ export const renderRecipe = (recipe, isLiked) => {
           recipe.servings
         }</span>
         <span class="recipe__info-text"> servings</span>
-        <div class="recipe__info-buttons">
-            <button class="btn-tiny btn-decrease">
-                <svg>
-                    <use href="img/icons.svg#icon-circle-with-minus"></use>
-                </svg>
-            </button>
-            <button class="btn-tiny btn-increase">
-                <svg>
-                    <use href="img/icons.svg#icon-circle-with-plus"></use>
-                </svg>
-            </button>
-        </div>
     </div>
     <button class="recipe__love">
         <svg class="header__likes">
@@ -61,8 +48,7 @@ export const renderRecipe = (recipe, isLiked) => {
 <div class="recipe__directions">
     <h2 class="heading-2">How to cook it</h2>
     <p class="recipe__directions-text">
-        This recipe was carefully designed and tested by
-        <span class="recipe__by">The Pioneer Woman</span>. Please check out directions at their website.
+       Please check out directions on Youtube.
     </p>
     <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
         <span>Directions</span>
@@ -83,10 +69,8 @@ const renderIngredients = recipe => {
             <svg class="recipe__icon">
                 <use href="img/icons.svg#icon-check"></use>
             </svg>
-            <div class="recipe__count">${formatCount(ing.count)}</div>
             <div class="recipe__ingredient">
-                <span class="recipe__unit">${ing.unit}</span>
-                ${ing.ingredient}
+                ${ing}
             </div>
         </li>
     `;
@@ -95,35 +79,6 @@ const renderIngredients = recipe => {
   return ingredientList.join('\n');
 };
 
-const formatCount = count => {
-  if (!count) {
-    return '?';
-  }
-
-  const [int, dec] = count
-    .toString()
-    .split('.')
-    .map(el => parseInt(el, 10));
-
-  if (!dec) {
-    return count;
-  }
-
-  const fr = new Fraction((count - int).toFixed(1));
-  const num = int ? `${int} ` : '';
-
-  return `${num} ${fr.numerator}/${fr.denominator}`;
-};
-
 export const clearRecipe = () => {
   DOM.recipe().innerHTML = '';
-};
-
-export const updateServingsAndIngredients = recipe => {
-  //Update servings UI
-  DOM.recipeServings().textContent = recipe.servings;
-  //Update ingredients
-  Array.from(DOM.recipeIngredientsCount()).forEach((el, i) => {
-    el.textContent = formatCount(recipe.ingredients[i].count);
-  });
 };

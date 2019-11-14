@@ -33,16 +33,6 @@ DOM.searchForm().addEventListener('submit', e => {
   searchControl();
 });
 
-DOM.searchResultsPages().addEventListener('click', e => {
-  const btn = e.target.closest('.btn-inline');
-  if (btn) {
-    const goToPage = parseInt(btn.dataset.goto, 10);
-    searchView.clearResults();
-    searchView.clearButtons();
-    searchView.renderResults(state.search.recipes, goToPage);
-  }
-});
-
 const recipeControler = async () => {
   const id = window.location.hash.substring(1);
 
@@ -59,13 +49,12 @@ const recipeControler = async () => {
       clearLoader(DOM.recipe());
       state.recipe.calcRecipeTime();
       state.recipe.calcServings();
-      state.recipe.parseIngredients();
 
       //Render recipe
       recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (error) {
       console.log(error);
-      alert('Failed getting recipe!');
+      alert('Recipe id invalid!');
     }
   }
 };
@@ -75,6 +64,10 @@ const recipeControler = async () => {
 );
 
 window.addEventListener('load', () => {
+  DOM.sadNewsBtn().addEventListener('click', () => {
+    DOM.sadNewsInfo().remove();
+    DOM.appContainer().classList.remove('sad__news');
+  });
   state.likes = new Likes();
   state.likes.readData();
   likesView.toggleLikeMenu(state.likes.getNumOfLikes());
@@ -83,15 +76,7 @@ window.addEventListener('load', () => {
 });
 
 DOM.recipe().addEventListener('click', e => {
-  if (e.target.matches('.btn-decrease, .btn-decrease *')) {
-    //Decrease servings and ingredients
-    if (state.recipe.servings > 1) state.recipe.updateServings('dec');
-    recipeView.updateServingsAndIngredients(state.recipe);
-  } else if (e.target.matches('.btn-increase, .btn-increase *')) {
-    //Increase servings and ingredients
-    state.recipe.updateServings('inc');
-    recipeView.updateServingsAndIngredients(state.recipe);
-  } else if (e.target.matches('.recipe__btn, .recipe__btn *')) {
+  if (e.target.matches('.recipe__btn, .recipe__btn *')) {
     listControler();
   } else if (e.target.matches('.recipe__love, .recipe__love *')) {
     likesControler();
@@ -115,7 +100,7 @@ const listControler = () => {
   }
 
   state.recipe.ingredients.forEach(ing => {
-    const item = state.list.addItem(ing.count, ing.unit, ing.ingredient);
+    const item = state.list.addItem(ing);
     listView.renderItem(item);
   });
 };
